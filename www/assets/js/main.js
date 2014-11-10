@@ -45,8 +45,9 @@ function SearchResults($element) {
           '" data-isbn10="' + collection[i].isbn10 +
           '" data-author="' + authors +
           '" data-title="' + collection[i].title +
-          '">' +
+          '"><span>' +
           collection[i].title + ' by ' + authors +
+          '</span>' +
         '</li>'
       );
     }
@@ -58,36 +59,37 @@ function ReadingList($element) {
   var $el = $element;
 
   // Interact with the items on the list.
-  // $el.on('click', 'input[type=checkbox]', function() {
-  //   hoodie.store.remove('book', $(this).parent().data('id'));
-  //   return false;
-  // });
-
-  // Handle "inline editing" of a todo.
-  $el.on('click', 'label', function() {
-    $(this).parent().parent().find('.editing').removeClass('editing');
-    $(this).parent().addClass('editing');
+  $el.on('click', 'i.remove', function() {
+    console.log('hi');
+    hoodie.store.remove('book', $(this).parent().data('id'));
     return false;
   });
 
+  // Handle "inline editing" of a todo.
+  // $el.on('click', 'label', function() {
+  //   $(this).parent().parent().find('.editing').removeClass('editing');
+  //   $(this).parent().addClass('editing');
+  //   return false;
+  // });
+
   // Handle updating of an "inline edited" todo.
-  $el.on('keypress', 'input[type=text]', function(event) {
-    if (event.keyCode === 13) {
-      hoodie.store.update('book', $(this).parent().data('id'), {
-        title: event.target.value
-      });
-    }
-  });
+  // $el.on('keypress', 'input[type=text]', function(event) {
+  //   if (event.keyCode === 13) {
+  //     hoodie.store.update('book', $(this).parent().data('id'), {
+  //       title: event.target.value
+  //     });
+  //   }
+  // });
 
   this.add = function(book) {
     collection.push(book);
     paint();
   };
 
-  this.update = function(book) {
-    collection[getBookItemIndexById(book.id)] = book;
-    paint();
-  };
+  // this.update = function(book) {
+  //   collection[getBookItemIndexById(book.id)] = book;
+  //   paint();
+  // };
 
   this.remove = function(book) {
     collection.splice(getBookItemIndexById(book.id), 1);
@@ -119,7 +121,7 @@ function ReadingList($element) {
         '<li data-id="' + collection[i].id + '">' +
           '<input type="checkbox"> <label>' + collection[i].title +
           ' by ' + collection[i].author + '</label>' +
-          '<input type="text" value="' + collection[i].title + '"/>' +
+          ' <i class="fa fa-trash remove"></i>' +
         '</li>'
       );
     }

@@ -6,17 +6,17 @@
   margin: 0;
 }
 
-html, body{
-  height: 100%;
+html{
+  min-height: 100%;
   position: relative;
+}
+
+body{
+  margin-bottom: 60px;
 }
 
 .container {
   position: relative;
-  /*background: #fff;
-  margin-top: -10px;
-  padding: 0;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);*/
 }
 
 /* hide contents until we know if user is signed in or not */
@@ -41,7 +41,11 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
 .content {
   padding: 10px;
   float: left;
-  width: 380px;
+  min-width: 380px;
+}
+
+.remove{
+  cursor: pointer;
 }
 
 .loading-spinner{
@@ -58,7 +62,7 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
 }
 
 .footer{
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
   height: 60px;
@@ -69,7 +73,7 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
   margin: 0;
 }
 
-ul#todolist {
+ul#readinglist {
   margin: 0 0 10px;
   padding: 0;
 }
