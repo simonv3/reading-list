@@ -7,13 +7,18 @@ function SearchResults($element) {
   var $el = $element;
 
   $el.on('click', 'li', function() {
-    var id = $(this).parent().data('id');
-    var name = $(this).parent().data('name');
-    readingList.add({
-      title: name
+    console.log($(this));
+    var isbn10 = $(this).data('isbn10');
+    var isbn13 = $(this).data('isbn13');
+    var author = $(this).data('author');
+    var title = $(this).data('title');
+    hoodie.store.add('book', {
+      title: title,
+      isbn10: isbn10,
+      isbn13: isbn13,
+      author: author
     });
     return false;
-    
   });
 
   this.setResults = function(results){
@@ -29,11 +34,18 @@ function SearchResults($element) {
   function paint() {
     $el.html('');
     for (var i = 0, len = collection.length; i<len; i++) {
+      var authors = '';
+      if (collection[i].author_data.length > 0){
+        authors = collection[i].author_data[0].name;
+      }
+      
       $el.append(
-        '<li data-id="' + collection[i].id +
-          'data-name="' + collection[i].name +
+        '<li data-isbn13="' + collection[i].isbn13 +
+          '" data-isbn10="' + collection[i].isbn10 +
+          '" data-author="' + authors +
+          '" data-title="' + collection[i].title +
           '">' +
-          collection[i].title +
+          collection[i].title + ' by ' + authors +
         '</li>'
       );
     }
@@ -104,7 +116,8 @@ function ReadingList($element) {
     for (var i = 0, len = collection.length; i<len; i++) {
       $el.append(
         '<li data-id="' + collection[i].id + '">' +
-          '<input type="checkbox"> <label>' + collection[i].title + '</label>' +
+          '<input type="checkbox"> <label>' + collection[i].title +
+          ' by ' + collection[i].author + '</label>' +
           '<input type="text" value="' + collection[i].title + '"/>' +
         '</li>'
       );
