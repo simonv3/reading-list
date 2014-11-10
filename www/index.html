@@ -72,7 +72,9 @@
         <ul id="readinglist"></ul>
 
         <input type="text" id="bookinput"  placeholder="new todo ↵" />
-        <span><i class="fa fa-spinner fa-spin"></i></span>
+        <span id="loading" class="loading-spinner">
+          <i class="fa fa-spinner fa-spin"></i>
+        </span>
         <ul id="searchresults"></ul>
       </div>      
     </div> <!-- /.container -->
@@ -83,6 +85,7 @@
       </footer>
 
     <script src="assets/vendor/jquery-2.1.0.min.js"></script>
+    <script src="assets/vendor/jquery.debounce-1.0.5.js"></script>
     <script src="assets/vendor/bootstrap/bootstrap.js"></script>
     <script src="assets/vendor/prism/prism.js"></script>
     <!-- Load the dynamic version of hoodie.js that includes all the plugin code-->

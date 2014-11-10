@@ -5,9 +5,9 @@ var hoodie  = new Hoodie();
 function SearchResults($element) {
   var collection = [];
   var $el = $element;
+  var that = this;
 
   $el.on('click', 'li', function() {
-    console.log($(this));
     var isbn10 = $(this).data('isbn10');
     var isbn13 = $(this).data('isbn13');
     var author = $(this).data('author');
@@ -18,6 +18,7 @@ function SearchResults($element) {
       isbn13: isbn13,
       author: author
     });
+    that.clear();
     return false;
   });
 
@@ -142,38 +143,25 @@ hoodie.store.on('remove:book', readingList.remove);
 // clear todos when user logs out,
 hoodie.account.on('signout', readingList.clear);
 
-var onPreviousSend = '';
-var searchSentRecently = false;
-var waitForResponse = false;
+
 // handle creating a new task
-$('#bookinput').on('keyup', function(event) {
-  
+$('#bookinput').on('keyup', $.debounce(function(event) {
+  var stillTyping = true;
+
   var val = event.target.value;
-  
+
   // Be nice to the search
-  if (val.length >= 3 &&
-      !searchSentRecently &&
-      onPreviousSend != val &&
-      !waitForResponse){
+  if (val.length >= 3){
 
-    searchSentRecently = true;
-    onPreviousSend = val;
-    waitForResponse = true;
-
+    $('#loading').show();
     hoodie.isbn.searchbooks({
       query: val
     }).fail(function(){
-      console.log('error');
-      waitForResponse = false;
+      $('#loading').hide();
     }).done(function(search){
-      console.log(search);
-      waitForResponse = false;
+      $('#loading').hide();
       searchResults.setResults(search.result.data);
     });
-    
-    window.setTimeout(function(){
-      searchSentRecently = false;
-    }, 1000);
   }
   // ENTER & non-empty.
   if (event.keyCode === 13 && event.target.value.length) {
@@ -182,4 +170,4 @@ $('#bookinput').on('keyup', function(event) {
     });
     val = '';
   }
-});
+}, 300));
