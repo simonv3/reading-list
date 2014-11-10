@@ -1,0 +1,96 @@
+  <!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ReadingList</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/prism/prism.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="">
+        <h1><i class="fa fa-book"></i> A Reading List</h1>
+        <p>
+          Keeping track of what you're reading - an experiment with hood.ie
+        </p>
+
+        <div class="hoodie-accountbar">
+
+          <div class="hoodie-account-signedout">
+            <span class="btn-group">
+              <button class="btn btn-small btn-primary" data-hoodie-action="signup">Sign Up</button>
+              <button class="btn btn-small dropdown-toggle btn-primary" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#" data-hoodie-action="signin">Sign In</a></li>
+                <li><a href="#" data-hoodie-action="resetpassword">Reset Password</a></li>
+                <li><a href="#" data-hoodie-action="destroy">Clear local data</a></li>
+              </ul>
+            </span>
+          </div><!-- /.hoodie-account-signedout -->
+
+          <div class="hoodie-account-signedin">
+            Hello,
+            <span class="hoodie-username"><!-- usern name will be filled in here --></span>
+            <span class="btn-group">
+              <button class="btn btn-small btn-primary" data-hoodie-action="signout">Sign Out</button>
+              <button class="btn btn-small dropdown-toggle btn-primary" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#" data-hoodie-action="changepassword">Change Password</a></li>
+                <li><a href="#" data-hoodie-action="changeusername">Change Username</a></li>
+                <li><a href="#" data-hoodie-action="destroy">Destroy Account</a></li>
+              </ul>
+            </span>
+          </div><!-- /.hoodie-account-signedin -->
+
+          <div class="hoodie-account-error">
+            Hello,
+            <span class="hoodie-username"><!-- username will be filled in here --></span>.
+            <span class="btn-group">
+              <button class="btn btn-small btn-danger" data-hoodie-action="signin">Authentication error: Sign in again</button>
+              <button class="btn btn-small dropdown-toggle btn-danger" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#" data-hoodie-action="signout">Sign out</a></li>
+              </ul>
+            </span>
+          </div><!-- /.hoodie-account-error -->
+        </div><!--/hoodieAccountBar -->
+      </div>
+
+      <div class="content">
+        <ul id="readinglist"></ul>
+
+        <input type="text" id="bookinput"  placeholder="new todo ↵" />
+        <span><i class="fa fa-spinner fa-spin"></i></span>
+        <ul id="searchresults"></ul>
+      </div>      
+    </div> <!-- /.container -->
+      <footer class="footer">
+        <div class="container">
+          <p>&hearts; hood.ie 2014</p>
+        </div>
+      </footer>
+
+    <script src="assets/vendor/jquery-2.1.0.min.js"></script>
+    <script src="assets/vendor/bootstrap/bootstrap.js"></script>
+    <script src="assets/vendor/prism/prism.js"></script>
+    <!-- Load the dynamic version of hoodie.js that includes all the plugin code-->
+    <script src="/_api/_files/hoodie.js"></script>
+
+    <script src="assets/vendor/hoodie.accountbar.bootstrap.js"></script>
+    <script src="assets/vendor/bootstrap.modalform.js"></script>
+    <script src="assets/vendor/underscore-min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
