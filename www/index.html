@@ -17,7 +17,7 @@
       <div class="">
         <h1><i class="fa fa-book"></i> A Reading List</h1>
         <p>
-          Keeping track of what you're reading - an experiment with hood.ie
+          Keeping track of what you're reading - an experiment with hood.ie and backbone
         </p>
 
         <div class="hoodie-accountbar">
@@ -86,8 +86,13 @@
 
       <script type="text/template" id="reading-list-item-template">
         <span> 
-          <input type='checkbox'/> <span> <%= title %> by <%= author %> </span>
+          <input type='checkbox'/> <span> <%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %> </span>
           <i class='fa fa-trash remove'></i>
+        </span>
+      </script>
+      <script type="text/template" id="search-result-template">
+        <span> 
+          <span> <%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %> </span>
         </span>
       </script>
 
@@ -105,9 +110,10 @@
     <script src="assets/vendor/bootstrap.modalform.js"></script>
     <script src="assets/js/models/book.js"></script>
     <script src="assets/js/collections/book_collection.js"></script>
-    <script src="assets/js/models/search_result.js"></script>
     <script src="assets/js/views/book.js"></script>
     <script src="assets/js/views/book_collection.js"></script>
+    <script src="assets/js/views/search_results.js"></script>
+    <script src="assets/js/views/search_result.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

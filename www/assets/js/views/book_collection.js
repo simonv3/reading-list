@@ -10,7 +10,6 @@ app.BookCollectionView = Backbone.View.extend({
   render: function(){
     this.collection.each(function( item ){
       this.renderBook(item);
-      console.log(this);
     }, this);
   },
   renderBook: function( item ){
