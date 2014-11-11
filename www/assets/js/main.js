@@ -2,22 +2,22 @@
 // initialize Hoodie
 var hoodie  = new Hoodie();
 
+var app = app || {};
+
 function SearchResults($element) {
   var collection = [];
   var $el = $element;
   var that = this;
 
   $el.on('click', 'li', function() {
-    var isbn10 = $(this).data('isbn10');
-    var isbn13 = $(this).data('isbn13');
-    var author = $(this).data('author');
-    var title = $(this).data('title');
-    hoodie.store.add('book', {
-      title: title,
-      isbn10: isbn10,
-      isbn13: isbn13,
-      author: author
+    var book = new app.Book({
+      title: $(this).data('title'),
+      author: $(this).data('author'),
+      isbn10: $(this).data('isbn10'),
+      isbn13: $(this).data('isbn13')
     });
+    bookCollectionView.collection.add(book);
+    hoodie.store.add('book', book.toJSON());
     that.clear();
     return false;
   });
@@ -54,96 +54,80 @@ function SearchResults($element) {
   }
 }
 
-function ReadingList($element) {
-  var collection = [];
-  var $el = $element;
+// function ReadingList($element) {
+//   var collection = [];
+//   var $el = $element;
 
-  // Interact with the items on the list.
-  $el.on('click', 'i.remove', function() {
-    console.log('hi');
-    hoodie.store.remove('book', $(this).parent().data('id'));
-    return false;
-  });
+//   // Interact with the items on the list.
+//   $el.on('click', 'i.remove', function() {
+//     console.log('hi');
+//     bookList.remove
+//     hoodie.store.remove('book', $(this).parent().data('id'));
+//     return false;
+//   });
 
-  // Handle "inline editing" of a todo.
-  // $el.on('click', 'label', function() {
-  //   $(this).parent().parent().find('.editing').removeClass('editing');
-  //   $(this).parent().addClass('editing');
-  //   return false;
-  // });
+//   this.add = function(book) {
+//     collection.push(book);
+//     paint();
+//   };
 
-  // Handle updating of an "inline edited" todo.
-  // $el.on('keypress', 'input[type=text]', function(event) {
-  //   if (event.keyCode === 13) {
-  //     hoodie.store.update('book', $(this).parent().data('id'), {
-  //       title: event.target.value
-  //     });
-  //   }
-  // });
+//   this.remove = function(book) {
+//     collection.splice(getBookItemIndexById(book.id), 1);
+//     paint();
+//   };
 
-  this.add = function(book) {
-    collection.push(book);
-    paint();
-  };
+//   this.clear = function() {
+//     collection = [];
+//     paint();
+//   };
 
-  // this.update = function(book) {
-  //   collection[getBookItemIndexById(book.id)] = book;
-  //   paint();
-  // };
+//   // Find index/position of a todo in collection.
+//   function getBookItemIndexById(id) {
+//     for (var i = 0, len = collection.length; i < len; i++) {
+//       if (collection[i].id === id) {
+//         return i;
+//       }
+//     }
+//     return null;
+//   }
 
-  this.remove = function(book) {
-    collection.splice(getBookItemIndexById(book.id), 1);
-    paint();
-  };
+//   function paint() {
+//     $el.html('');
+//     collection.sort(function(a, b) {
+//       return ( a.createdAt > b.createdAt ) ? 1 : -1;
+//     });
+//     for (var i = 0, len = collection.length; i<len; i++) {
+//       $el.append(
+//         '<li data-id="' + collection[i].id + '">' +
+//           '<input type="checkbox"> <label>' + collection[i].title +
+//           ' by ' + collection[i].author + '</label>' +
+//           ' <i class="fa fa-trash remove"></i>' +
+//         '</li>'
+//       );
+//     }
+//   }
+// }
 
-  this.clear = function() {
-    collection = [];
-    paint();
-  };
 
-  // Find index/position of a todo in collection.
-  function getBookItemIndexById(id) {
-    for (var i = 0, len = collection.length; i < len; i++) {
-      if (collection[i].id === id) {
-        return i;
-      }
-    }
-    return null;
-  }
-
-  function paint() {
-    $el.html('');
-    collection.sort(function(a, b) {
-      return ( a.createdAt > b.createdAt ) ? 1 : -1;
-    });
-    for (var i = 0, len = collection.length; i<len; i++) {
-      $el.append(
-        '<li data-id="' + collection[i].id + '">' +
-          '<input type="checkbox"> <label>' + collection[i].title +
-          ' by ' + collection[i].author + '</label>' +
-          ' <i class="fa fa-trash remove"></i>' +
-        '</li>'
-      );
-    }
-  }
-}
 
 // Instantiate readinglist collection & view.
-var readingList = new ReadingList($('#readinglist'));
+// var readingList = new ReadingList($('#readinglist'));
+
+var bookCollectionView;
+
 // Instantiate search results.
 var searchResults = new SearchResults($('#searchresults'));
 
 // initial load of all book items from the store
 hoodie.store.findAll('book').then(function(allBooks) {
-  allBooks.forEach(readingList.add);
+  bookCollectionView = new app.BookCollectionView(allBooks);
 });
-
 // when a book changes, update the UI.
-hoodie.store.on('add:book', readingList.add);
-hoodie.store.on('update:book', readingList.update);
-hoodie.store.on('remove:book', readingList.remove);
+// hoodie.store.on('add:book', readingList.add);
+// hoodie.store.on('update:book', readingList.update);
+// hoodie.store.on('remove:book', readingList.remove);
 // clear todos when user logs out,
-hoodie.account.on('signout', readingList.clear);
+hoodie.account.on('signout', bookCollectionView.collection.reset());
 
 
 // handle creating a new task
@@ -172,4 +156,4 @@ $('#bookinput').on('keyup', $.debounce(function(event) {
     });
     val = '';
   }
-}, 300));
+}, 555));

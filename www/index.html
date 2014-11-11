@@ -69,7 +69,7 @@
       </div>
 
       <div class="content">
-        <ul id="readinglist"></ul>
+        <ul id="booklist"></ul>
 
         <input type="text" id="bookinput"  placeholder="new todo ↵" />
         <span id="loading" class="loading-spinner">
@@ -84,18 +84,30 @@
         </div>
       </footer>
 
+      <script type="text/template" id="reading-list-item-template">
+        <span> 
+          <input type='checkbox'/> <span> <%= title %> by <%= author %> </span>
+          <i class='fa fa-trash remove'></i>
+        </span>
+      </script>
+
     <script src="assets/vendor/jquery-2.1.0.min.js"></script>
     <script src="assets/vendor/jquery.debounce-1.0.5.js"></script>
     <script src="assets/vendor/bootstrap/bootstrap.js"></script>
     <script src="assets/vendor/underscore-min.js"></script>
-    <script src="assets/vendor/backbone.min.js"></script>
+    <script src="assets/vendor/backbone.js"></script>
+    <script src="assets/vendor/moment.min.js"></script>
     <script src="assets/vendor/prism/prism.js"></script>
     <!-- Load the dynamic version of hoodie.js that includes all the plugin code-->
     <script src="/_api/_files/hoodie.js"></script>
 
     <script src="assets/vendor/hoodie.accountbar.bootstrap.js"></script>
     <script src="assets/vendor/bootstrap.modalform.js"></script>
-    
+    <script src="assets/js/models/book.js"></script>
+    <script src="assets/js/collections/book_collection.js"></script>
+    <script src="assets/js/models/search_result.js"></script>
+    <script src="assets/js/views/book.js"></script>
+    <script src="assets/js/views/book_collection.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
