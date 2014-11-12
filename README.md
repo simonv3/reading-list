@@ -1,3 +1,9 @@
+# A Reading List for Introverts
+
+> Reading doesn't have to happen in public.
+
+Below are the legacy instructions for building a hoodie app. They're here because it's probably the easiest way for you to get started while this README.md is figured out.
+
 # Creating a new Hoodie App
 
 ## Installation

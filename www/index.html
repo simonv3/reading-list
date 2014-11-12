@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ReadingList</title>
+    <title>Reading List</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -15,9 +15,9 @@
   <body>
     <div class="container">
       <div class="">
-        <h1><i class="fa fa-book"></i> A Reading List</h1>
+        <h1><i class="fa fa-book"></i> An Introverted Reading List</h1>
         <p>
-          Keeping track of what you're reading - an experiment with hood.ie and backbone
+          Keeping track of what you're reading - an experiment with hood.ie and backbone.
         </p>
 
         <div class="hoodie-accountbar">
@@ -66,12 +66,15 @@
             </span>
           </div><!-- /.hoodie-account-error -->
         </div><!--/hoodieAccountBar -->
+        <a id="linkToGoodreads" href="http://127.0.0.1:6004/oauth/goodreads" class="btn btn-small btn-warning goodreads-link">Download from Goodreads</a>
+        <p class="goodreads-link" id="linkedToGoodreads">You're linked to Goodreads. Importing your reading list will come soon!
+        </p>
       </div>
 
       <div class="content">
         <ul id="booklist"></ul>
 
-        <input type="text" id="bookinput"  placeholder="new todo ↵" />
+        <input type="text" id="bookinput"  placeholder="search for book ↵" />
         <span id="loading" class="loading-spinner">
           <i class="fa fa-spinner fa-spin"></i>
         </span>
@@ -80,7 +83,7 @@
     </div> <!-- /.container -->
       <footer class="footer">
         <div class="container">
-          <p>&hearts; hood.ie 2014</p>
+          <p>made with &hearts; and hood.ie 2014</p>
         </div>
       </footer>
 

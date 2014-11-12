@@ -42,3 +42,21 @@ $('#bookinput').on('keyup', $.debounce(function(event) {
     });
   }
 }, 555));
+
+// check if the user is linked to goodreads.
+// this is still buggy probably.
+$(document).ready(function(){
+  hoodie.goodreads.getinfo({username: hoodie.account.username}).fail(function(){
+    $('#linkToGoodreads').show();
+  }).done(function(data){
+    if (data.goodreads_exists){
+      $('#linkedToGoodreads').show();
+    } else {
+      $('#linkToGoodreads').show();
+    }
+  });
+
+  var href = $('#linkToGoodreads').attr('href');
+  $('#linkToGoodreads').attr('href',
+                             href + '?hoodie_id=' + hoodie.account.username);
+});

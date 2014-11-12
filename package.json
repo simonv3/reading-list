@@ -1,11 +1,12 @@
 {
   "name": "reading-list",
-  "version": "3.0.0",
+  "version": "0.0.1",
   "type": "app",
   "dependencies": {
     "hoodie-plugin-appconfig": "^2.0.1",
     "hoodie-plugin-email": "^1.0.0",
-    "hoodie-plugin-isbndb": "0.0.1",
+    "hoodie-plugin-isbn": "^0.0.1",
+    "hoodie-plugin-goodreads": "^0.0.1",
     "hoodie-plugin-users": "^2.1.0",
     "hoodie-server": "^2.0.0"
   },
@@ -23,52 +24,16 @@
       "hoodie-plugin-appconfig",
       "hoodie-plugin-email",
       "hoodie-plugin-users",
+      "hoodie-plugin-goodreads",
       "hoodie-plugin-isbn"
     ]
   },
   "description": "## Installation",
-  "_id": "my-first-hoodie@3.0.0",
-  "dist": {
-    "shasum": "2cff3f5f59e47bc458dd4eb54d68dd6ad52bf4a0",
-    "tarball": "http://registry.npmjs.org/my-first-hoodie/-/my-first-hoodie-3.0.0.tgz"
-  },
-  "_from": "my-first-hoodie@3.0.0",
-  "_npmVersion": "1.3.14",
-  "_npmUser": {
-    "name": "gr2m",
-    "email": "gregor@martynus.net"
-  },
   "maintainers": [
     {
-      "name": "svnlto",
-      "email": "me@svenlito.com"
-    },
-    {
-      "name": "caolan",
-      "email": "caolan.mcmahon@gmail.com"
-    },
-    {
-      "name": "gr2m",
-      "email": "gregor@martynus.net"
-    },
-    {
-      "name": "jan",
-      "email": "jan@apache.org"
-    },
-    {
-      "name": "espy",
-      "email": "hello@alexfeyerke.com"
-    },
-    {
-      "name": "boennemann",
-      "email": "stephan@boennemann.me"
-    },
-    {
-      "name": "hoodiebot",
-      "email": "stephan@thehoodiefirm.com"
+      "name": "simonv3",
+      "email": "svansintjan@gmail.com"
     }
   ],
-  "directories": {},
-  "_shasum": "2cff3f5f59e47bc458dd4eb54d68dd6ad52bf4a0",
-  "_resolved": "https://registry.npmjs.org/my-first-hoodie/-/my-first-hoodie-3.0.0.tgz"
+  "directories": {}
 }
