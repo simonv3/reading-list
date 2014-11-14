@@ -52,6 +52,10 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
   min-width: 380px;
 }
 
+input{
+  margin-bottom: 2rem;
+}
+
 .remove{
   cursor: pointer;
 }

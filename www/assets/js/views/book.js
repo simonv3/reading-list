@@ -16,6 +16,8 @@ app.BookView = Backbone.View.extend({
   deleteBook: function(){
     this.remove();
     hoodie.store.remove('book', this.model.get('id'))
-      .then(function(){});
+      .then(function(){
+
+      });
   }
 });

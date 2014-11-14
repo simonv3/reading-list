@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="">
+      <div class="col-md-12">
         <h1><i class="fa fa-book"></i> An Introverted Reading List</h1>
         <p>
           Keeping track of what you're reading - an experiment with hood.ie and backbone.
@@ -70,16 +70,23 @@
         <p class="goodreads-link" id="linkedToGoodreads">You're linked to Goodreads. Importing your reading list will come soon!
         </p>
       </div>
+    </div>
 
-      <div class="content">
-        <ul id="booklist"></ul>
+      <div class="container">
+        <div class="col-md-3">
+          <input type="text" class="add-list form-control" id="listinput" placeholder="create a new list ↵"/>
+          <ul id="shelflist" class="nav nav-pills nav-stacked"></ul>
 
-        <input type="text" id="bookinput"  placeholder="search for book ↵" />
-        <span id="loading" class="loading-spinner">
-          <i class="fa fa-spinner fa-spin"></i>
-        </span>
-        <ul id="searchresults"></ul>
-      </div>      
+        </div>
+        <div class="col-md-9" role="main">
+          <input type="text" id="bookinput" placeholder="search for book to add to list↵" class="form-control"/>
+          <span id="loading" class="loading-spinner">
+            <i class="fa fa-spinner fa-spin"></i>
+          </span>
+          <ul id="booklist"></ul>
+          <ul id="searchresults"></ul>
+        </div>
+      </div> 
     </div> <!-- /.container -->
       <footer class="footer">
         <div class="container">
@@ -89,14 +96,19 @@
 
       <script type="text/template" id="reading-list-item-template">
         <span> 
-          <input type='checkbox'/> <span> <%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %> </span>
+          <input type='checkbox'/><span><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
           <i class='fa fa-trash remove'></i>
         </span>
       </script>
       <script type="text/template" id="search-result-template">
         <span> 
-          <span> <%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %> </span>
+          <span><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
         </span>
+      </script>
+      <script type="text/template" id="shelf-list-item-template">
+        <a> 
+          <span><%= name %></span>
+        </a>
       </script>
 
     <script src="assets/vendor/jquery-2.1.0.min.js"></script>
@@ -112,9 +124,14 @@
     <script src="assets/vendor/hoodie.accountbar.bootstrap.js"></script>
     <script src="assets/vendor/bootstrap.modalform.js"></script>
     <script src="assets/js/models/book.js"></script>
+    <script src="assets/js/models/shelf.js"></script>
     <script src="assets/js/collections/book_collection.js"></script>
+    <script src="assets/js/collections/shelf_collection.js"></script>
+
     <script src="assets/js/views/book.js"></script>
     <script src="assets/js/views/book_collection.js"></script>
+    <script src="assets/js/views/shelf_collection.js"></script>
+    <script src="assets/js/views/shelf.js"></script>
     <script src="assets/js/views/search_results.js"></script>
     <script src="assets/js/views/search_result.js"></script>
     <script src="assets/js/main.js"></script>

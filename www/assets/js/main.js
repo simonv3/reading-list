@@ -1,20 +1,38 @@
-'use strict';
 // initialize Hoodie
 var hoodie  = new Hoodie();
 
 var app = app || {};
 
+// create a publisher subscriber model
+app.pubSub = _.extend({}, Backbone.Events);
+
 // Instantiate main book collection view.
-var bookCollectionView;
+var bookCollectionView = new app.BookCollectionView();
 
 // Instantiate search results.
 var searchResultsView = new app.SearchResultsView();
 // var searchResults = new SearchResults($('#searchresults'));
 
 // initial load of all book items from the store
-hoodie.store.findAll('book').then(function(allBooks) {
-  bookCollectionView = new app.BookCollectionView(allBooks);
+// hoodie.store.findAll('book').then(function(allBooks) {
+//   bookCollectionView = new app.BookCollectionView(allBooks);
+// });
+
+// var readingShelf = new app.Shelf({
+//   name: 'reading',
+//   collection: bookCollectionView
+// });
+
+var shelfCollection;
+var shelvesCollectionView;
+
+hoodie.store.findAll('shelf').then(function(allShelves){
+  // allShelves.push(readingShelf);
+  shelfCollection = new app.ShelfCollection(allShelves);
+  shelvesCollectionView = new app.ShelfCollectionView(shelfCollection);
+  shelvesCollectionView.setIndexAsActive(0);
 });
+
 // when a book changes, update the UI.
 // hoodie.store.on('add:book', readingList.add);
 // hoodie.store.on('update:book', readingList.update);
@@ -22,6 +40,17 @@ hoodie.store.findAll('book').then(function(allBooks) {
 
 // clear book list when user logs out,
 hoodie.account.on('signout', bookCollectionView.collection.reset());
+
+$('#listinput').on('keyup', function(event){
+  var val = event.target.value;
+
+  if (event.keyCode === 13){
+    // add a shelf
+    var shelf = new app.Shelf({ name : val });
+    shelvesCollectionView.addShelf(shelf);
+    hoodie.store.add('shelf', shelf.toJSON());
+  }
+});
 
 // search for a new book
 $('#bookinput').on('keyup', $.debounce(function(event) {

@@ -8,5 +8,7 @@ app.Book = Backbone.Model.extend({
     isbn13: '',
     author_data: [],
     dateAdded: moment()
+  }, 
+  initialize: function(){
   }
 });
