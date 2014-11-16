@@ -15,9 +15,11 @@ app.BookView = Backbone.View.extend({
   },
   deleteBook: function(){
     this.remove();
-    hoodie.store.remove('book', this.model.get('id'))
-      .then(function(){
+    // this.model.delete();
+    console.log('deleting the book');
+    app.pubSub.trigger('remove:shelf', this.model);
 
-      });
+    // console.log(this.model.get('id'));
+    
   }
 });

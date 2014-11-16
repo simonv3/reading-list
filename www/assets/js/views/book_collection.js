@@ -3,16 +3,15 @@ var app = app || {};
 app.BookCollectionView = Backbone.View.extend({
   el: '#booklist',
   initialize: function(initialBooks){
+    this.collection = []
     this.collection = new app.BookCollection(initialBooks);
     this.render();
-    
-    // app.pubSub.on('refreshbookcollection', this.render);
+    app.pubSub
+      .on('viewingNewShelf', this.setBookCollection, this);
   },
   render: function(){
-    // console.log(this.collection);
-    console.log(this.collection);
     this.$el.html('');
-    this.collection.each(function( item ){
+    this.collection.forEach(function( item ){
       this.renderBook(item);
     }, this);
   },
@@ -21,8 +20,8 @@ app.BookCollectionView = Backbone.View.extend({
     this.$el.append(bookView.render().el);
   },
   setBookCollection: function(collection){
+    console.log('collection: ', collection);
     this.collection = collection;
-    console.log('setting book collection');
     this.collection.on('add', this.render, this);
     this.render();
   }

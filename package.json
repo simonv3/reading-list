@@ -1,6 +1,6 @@
 {
   "name": "reading-list",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "app",
   "dependencies": {
     "hoodie-plugin-appconfig": "^2.0.1",

@@ -95,15 +95,11 @@
       </footer>
 
       <script type="text/template" id="reading-list-item-template">
-        <span> 
-          <input type='checkbox'/><span><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
+          <%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
           <i class='fa fa-trash remove'></i>
-        </span>
       </script>
       <script type="text/template" id="search-result-template">
-        <span> 
           <span><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
-        </span>
       </script>
       <script type="text/template" id="shelf-list-item-template">
         <a> 

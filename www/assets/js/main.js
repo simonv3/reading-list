@@ -11,26 +11,30 @@ var bookCollectionView = new app.BookCollectionView();
 
 // Instantiate search results.
 var searchResultsView = new app.SearchResultsView();
-// var searchResults = new SearchResults($('#searchresults'));
 
 // initial load of all book items from the store
-// hoodie.store.findAll('book').then(function(allBooks) {
-//   bookCollectionView = new app.BookCollectionView(allBooks);
-// });
-
-// var readingShelf = new app.Shelf({
-//   name: 'reading',
-//   collection: bookCollectionView
-// });
 
 var shelfCollection;
 var shelvesCollectionView;
 
 hoodie.store.findAll('shelf').then(function(allShelves){
-  // allShelves.push(readingShelf);
   shelfCollection = new app.ShelfCollection(allShelves);
   shelvesCollectionView = new app.ShelfCollectionView(shelfCollection);
-  shelvesCollectionView.setIndexAsActive(0);
+  
+  // fetch all the books that belong to 
+  // the user, and add them to the right shelf
+  hoodie.store.findAll('book').then(function(allBooks) {
+    allBooks.forEach(function(book){
+      var modelBook = new app.Book(book);
+      shelfCollection.forEach(function(shelf){
+        if (shelf.get('name') === modelBook.get('shelf')){
+          console.log('added %s to %s', modelBook.get('title'), shelf.get('name'));
+          shelf.get('nested').add(modelBook);
+        }
+      });
+    });
+    shelvesCollectionView.setIndexAsActive(0);
+  });
 });
 
 // when a book changes, update the UI.
@@ -39,7 +43,7 @@ hoodie.store.findAll('shelf').then(function(allShelves){
 // hoodie.store.on('remove:book', readingList.remove);
 
 // clear book list when user logs out,
-hoodie.account.on('signout', bookCollectionView.collection.reset());
+// hoodie.account.on('signout', bookCollectionView.collection.reset());
 
 $('#listinput').on('keyup', function(event){
   var val = event.target.value;

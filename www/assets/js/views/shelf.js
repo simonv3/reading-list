@@ -11,9 +11,8 @@ app.ShelfView = Backbone.View.extend({
   events: {
     'click': 'view'
   },
-  initialize: function(options){
-    this.options = options || {};
-    this.model.on('change:active', this.setCollection, this);
+  initialize: function(){
+    // this.model.on('change:active', this.setCollection, this);
   },
   render: function(){
     this.$el.html( this.shelfTpl(this.model.toJSON()));
@@ -21,9 +20,5 @@ app.ShelfView = Backbone.View.extend({
   },
   view: function( event ){
     this.model.setActive(true);
-  },
-  setCollection: function(){
-    console.log('setting collection');
-    bookCollectionView.setBookCollection(this.model.get('nested'));
   }
 });

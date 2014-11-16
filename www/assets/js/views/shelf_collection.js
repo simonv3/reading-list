@@ -5,7 +5,7 @@ app.ShelfCollectionView = Backbone.View.extend({
   initialize: function(collection){
     this.collection = collection;
     this.render();
-    this.collection.on('change:active', this.render, this);
+    app.pubSub.on('renderShelves', this.render, this);
   },
   render: function(){
     this.$el.html('');
@@ -22,7 +22,7 @@ app.ShelfCollectionView = Backbone.View.extend({
     this.render();
   },
   setIndexAsActive: function( index ){
-    this.collection.models[index].set('active', true);
+    this.collection.models[index].setActive(true);
     this.render();
   }
 });
