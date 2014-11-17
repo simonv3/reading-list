@@ -1,3 +1,10 @@
+/* Presets
+
+*/
+
+$border-radius: 3px;
+$active-color: #428bca;
+
 /* ==========================================================================
    Hoodie Sign In / Sign Up / Sign out stylings
    ========================================================================== */
@@ -38,6 +45,12 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
   right: 10px;
 }
 
+/*
+
+  Reading List Stylings
+
+*/
+
 .goodreads-link{
   display: none;
 }
@@ -65,6 +78,7 @@ input{
 }
 
 .book-collection {
+  padding-left: 2rem;
 
   .title{
     width: 60%;
@@ -74,6 +88,19 @@ input{
   .remove{
     width: 60%;
     display: inline-block;
+  }
+
+  .read{
+    border: 1px solid $active-color;
+    padding: .2rem .5rem;
+    color: white;
+    border-radius: $border-radius;
+    cursor: pointer;
+  }
+
+  .not-read{
+    color: $active-color;
+    border: 1px solid $active-color;
   }
 }
 

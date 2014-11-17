@@ -48,8 +48,8 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
   return gulp.src('www/src/scripts/**/*.js')
     // .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
+    // .pipe(jshint.reporter('default'))
+    // .pipe(concat('main.js'))
     .pipe(gulp.dest('www/assets/js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
@@ -65,5 +65,5 @@ gulp.task('images', function() {
 });
 
 gulp.task('clean', function(cb) {
-    del(['www/assets/css', 'www/assets/js', 'www/assets/img'], cb)
+    del(['www/assets/css', 'www/assets/js', 'www/assets/img'], cb);
 });

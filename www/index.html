@@ -38,7 +38,7 @@
 
           <div class="hoodie-account-signedin">
             Hello,
-            <span class="hoodie-username"><!-- usern name will be filled in here --></span>
+            <span class="hoodie-username"><!-- username will be filled in here --></span>
             <span class="btn-group">
               <button class="btn btn-small btn-primary" data-hoodie-action="signout">Sign Out</button>
               <button class="btn btn-small dropdown-toggle btn-primary" data-toggle="dropdown">
@@ -94,24 +94,28 @@
         </div>
       </footer>
 
-      <script type="text/template" id="reading-list-item-template">
-          <span class="title"><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %>
-          </span>
-          <span>
-            <% [0, 1, 2, 3, 4].forEach(function(star){ %>
-              <i class="fa fa-star-o"></i>
-            <% }); %>
-          </span>
-          <i class='fa fa-trash remove'></i>
-      </script>
-      <script type="text/template" id="search-result-template">
-          <span><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
-      </script>
-      <script type="text/template" id="shelf-list-item-template">
-        <a> 
-          <span><%= name %></span>
-        </a>
-      </script>
+<div class="modal fade" id="markAsReadModal" tabindex="-1" role="dialog" aria-labelledby="markAsReadModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="markAsReadModalLabel">Mark Book as Read</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Days on which you finished reading this book:
+        </p>
+      </div>
+      <div class="modal-footer">
+        <p>
+          This will move the book to the 'read' shelf, and set a read date as today. 
+        </p>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <script src="assets/vendor/jquery-2.1.0.min.js"></script>
     <script src="assets/vendor/jquery.debounce-1.0.5.js"></script>

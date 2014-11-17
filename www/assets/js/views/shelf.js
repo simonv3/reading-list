@@ -7,7 +7,7 @@ app.ShelfView = Backbone.View.extend({
       class : this.model.get('active') ? 'active' : '',
     };
   },
-  shelfTpl: _.template($("#shelf-list-item-template").html()),
+  // shelfTpl: _.template($("#shelf-list-item-template").html()),
   events: {
     'click': 'view'
   },
@@ -15,7 +15,8 @@ app.ShelfView = Backbone.View.extend({
     // this.model.on('change:active', this.setCollection, this);
   },
   render: function(){
-    this.$el.html( this.shelfTpl(this.model.toJSON()));
+    this.$el.html( render('_shelf_list_item', this.model.toJSON()));
+    // this.$el.html( this.shelfTpl(this.model.toJSON()));
     return this;
   },
   view: function( event ){

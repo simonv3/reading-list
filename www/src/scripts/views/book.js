@@ -2,7 +2,7 @@ var app = app || {};
 
 app.BookView = Backbone.View.extend({
   tagName: 'li',
-  bookTpl: _.template($("#reading-list-item-template").html()),
+  // bookTpl: _.template($("#reading-list-item-template").html()),
   events: {
     'click i.remove': 'deleteBook',
   },
@@ -10,7 +10,8 @@ app.BookView = Backbone.View.extend({
     this.options = options || {};
   },
   render: function(){
-    this.$el.html( this.bookTpl(this.model.toJSON()));
+    this.$el.html( render('_reading_list_item', this.model.toJSON()));
+    // this.$el.html( this.bookTpl(this.model.toJSON()));
     return this;
   },
   deleteBook: function(){
