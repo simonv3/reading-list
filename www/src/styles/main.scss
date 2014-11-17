@@ -1,16 +1,17 @@
 /* ==========================================================================
    Hoodie Sign In / Sign Up / Sign out stylings
    ========================================================================== */
+
 * {
   margin: 0;
 }
 
-html {
+html{
   min-height: 100%;
   position: relative;
 }
 
-body {
+body{
   margin-bottom: 60px;
 }
 
@@ -25,8 +26,8 @@ body .hoodie-account-error {
   display: none;
 }
 
-html[data-hoodie-account-status=signedin] .hoodie-account-signedin,
-html[data-hoodie-account-status=error] .hoodie-account-error,
+html[data-hoodie-account-status=signedin]  .hoodie-account-signedin,
+html[data-hoodie-account-status=error]     .hoodie-account-error,
 html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
   display: block;
 }
@@ -37,11 +38,11 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
   right: 10px;
 }
 
-.goodreads-link {
+.goodreads-link{
   display: none;
 }
 
-.goodreads-connected {
+.goodreads-connected{
   display: none;
 }
 
@@ -51,25 +52,29 @@ html[data-hoodie-account-status=signedout] .hoodie-account-signedout {
   min-width: 380px;
 }
 
-input {
+input{
   margin-bottom: 2rem;
 }
 
-.remove {
+.remove{
   cursor: pointer;
 }
 
-.loading-spinner {
+.loading-spinner{
   display: none;
 }
 
-.book-collection .title {
-  width: 60%;
-  display: inline-block;
-}
-.book-collection .remove {
-  width: 60%;
-  display: inline-block;
+.book-collection {
+
+  .title{
+    width: 60%;
+    display: inline-block;
+  }
+
+  .remove{
+    width: 60%;
+    display: inline-block;
+  }
 }
 
 .copy {
@@ -81,7 +86,7 @@ input {
   bottom: 0;
 }
 
-.footer {
+.footer{
   position: absolute;
   bottom: 0;
   width: 100%;

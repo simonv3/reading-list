@@ -83,7 +83,7 @@
           <span id="loading" class="loading-spinner">
             <i class="fa fa-spinner fa-spin"></i>
           </span>
-          <ul id="booklist"></ul>
+          <ul id="booklist" class="book-collection"></ul>
           <ul id="searchresults"></ul>
         </div>
       </div> 
@@ -95,7 +95,13 @@
       </footer>
 
       <script type="text/template" id="reading-list-item-template">
-          <%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %></span>
+          <span class="title"><%= title %> by <%= author_data.length > 0 ? author_data[0].name : '' %>
+          </span>
+          <span>
+            <% [0, 1, 2, 3, 4].forEach(function(star){ %>
+              <i class="fa fa-star-o"></i>
+            <% }); %>
+          </span>
           <i class='fa fa-trash remove'></i>
       </script>
       <script type="text/template" id="search-result-template">
@@ -131,5 +137,6 @@
     <script src="assets/js/views/search_results.js"></script>
     <script src="assets/js/views/search_result.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   </body>
 </html>

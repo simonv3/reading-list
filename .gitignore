@@ -1,5 +1,7 @@
 data
 node_modules*
+.DS_Store
+.sass-cache/*
 *.sublime-project
 *.sublime-workspace
 npm-debug.log
