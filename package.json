@@ -5,7 +5,7 @@
   "dependencies": {
     "hoodie-plugin-appconfig": "^2.0.1",
     "hoodie-plugin-email": "^1.0.0",
-    "hoodie-plugin-isbn": "^0.0.1",
+    "hoodie-plugin-isbn": "^0.1.1",
     "hoodie-plugin-goodreads": "^0.0.1",
     "hoodie-plugin-users": "^2.1.0",
     "hoodie-server": "^2.0.0"
