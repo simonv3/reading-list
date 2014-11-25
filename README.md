@@ -1,87 +1,39 @@
-gulp-starter
-============
+# A Reading List for Introverts
 
-Starter Gulp + Browserify project with examples of how to accomplish some common tasks and workflows. Read the [blog post](http://viget.com/extend/gulp-browserify-starter-faq) for more context, and check out the [Wiki](https://github.com/greypants/gulp-starter/wiki) for some good background knowledge.
+> Reading doesn't have to happen in public.
 
-Includes the following tools, tasks, and workflows:
+Below are the legacy instructions for building a hoodie app. They're here because it's probably the easiest way for you to get started while this README.md is figured out.
 
-- [Browserify](http://browserify.org/) (with [browserify-shim](https://github.com/thlorenz/browserify-shim))
-- [Watchify](https://github.com/substack/watchify) (caching version of browserify for super fast rebuilds)
-- [SASS](http://sass-lang.com/) (with [compass](http://compass-style.org/) and [source maps](https://github.com/sindresorhus/gulp-ruby-sass#sourcemap)!)
-- [CoffeeScript](http://coffeescript.org/) (with source maps!)
-- [jQuery](http://jquery.com/) (from npm)
-- [Backbone](http://backbonejs.org/) (from npm)
-- [Handlebars](http://handlebarsjs.com/) (as a backbone dependency)
-- [BrowserSync](http://browsersync.io) for live reloading and a static server
-- Image optimization
-- Error Notifications in Notification Center
-- Non common-js vendor code (like a jQuery plugin)
+## Website
 
-If you've never used Node or npm before, you'll need to install Node.
-If you use homebrew, do:
+Once this is a bit more thoroughly working MMP-wise, it will probably be run on nodejitsu server. Check back for more details later!
+
+## Run this locally
+
+You'll need Git, Node, CouchDB, and NPM. This guide assumes you have them installed.
 
 ```
-brew install node
+git pull git@github.com:simonv3/reading-list.git
 ```
 
-Otherwise, you can download and install from [here](http://nodejs.org/download/).
-
-### Install Gulp Globally
-
-Gulp must be installed globally in order to use the command line tools. *You may need to use `sudo`*
-
-
-```
-npm install -g gulp
-```
-
-Alternatively, you can run the version of gulp installed local to the project instead with
-
-
-```
-./node_modules/.bin/gulp
-```
-
-### Install Sass and Compass (if you haven't already)
-
-
-The gulp-compass module relies on Compass already being installed on your system.
-
-If you have bundler installed, simply run bundle to install dependencies from the `Gemfile`
-
-
-```
-bundle
-```
-
-Otherwise,
-
-
-```
-gem install sass
-gem install compass --pre
-```
-
-### Install npm dependencies
+Install all the NPM things:
 
 ```
 npm install
 ```
 
-This runs through all dependencies listed in `package.json` and downloads them
-to a `node_modules` folder in your project directory.
-
-### Run gulp and be amazed.
+and then just run 
 
 ```
-gulp
+hoodie start
 ```
 
-This will run the `default` gulp task defined in `gulp/tasks/default.js`, which does the following:
-- Run 'watch', which has 2 task dependencies, `['setWatch', 'browserSync']`
-- `setWatch` sets a variable that tells the browserify task whether or not to use watchify.
-- `browserSync` has `build` as a task dependecy, so that all your assets will be processed before browserSync tries to serve them to you in the browser.
-- `build` includes the following tasks: `['browserify', 'sass', 'images', 'markup']`
+and you'll have your very own reading list!
 
-### Configuration
-All paths and plugin settings have been abstracted into a centralized config object in `gulp/config.js`. Adapt the paths and settings to the structure and needs of your project.
+If you want to hack on the frontend, run:
+
+```
+gulp watch
+```
+
+you'll need a server running with hoodie on it (haven't yet figured out how to browsersync on the hoodie server)
