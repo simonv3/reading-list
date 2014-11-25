@@ -24,7 +24,6 @@ var HoodieAccountBar = require('./views/hoodie_account_bar');
 $(function() {
   // initialize Hoodie
   
-  
   // var app = app || {};
 
   // create a publisher subscriber model

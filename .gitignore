@@ -8,3 +8,6 @@ data/
 .ruby-version
 Desktop.ini
 node_modules
+*.sublime-project
+*.sublime-workspace
+npm-debug.log
