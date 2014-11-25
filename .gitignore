@@ -1,5 +1,9 @@
 .DS_Store
 .sass-cache
-build
+wwww/build/images
+wwww/build/app*
+wwww/build/head*
+wwww/build/index.html
+data/
 Desktop.ini
 node_modules

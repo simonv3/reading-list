@@ -1,13 +1,14 @@
-var dest = "./build";
-var src = './src';
+var dest = "./www/build";
+var src = './www/src';
 
 module.exports = {
   browserSync: {
-    server: {
-      // We're serving the src folder as well
-      // for sass sourcemap linking
-      baseDir: [dest, src]
-    },
+    // server: {
+    //   // We're serving the src folder as well
+    //   // for sass sourcemap linking
+    //   baseDir: [dest, src]
+    // },
+    // proxy: 'http://127.0.0.1:6011/',
     files: [
       dest + "/**",
       // Exclude Map files
@@ -34,11 +35,11 @@ module.exports = {
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
-      entries: src + '/javascript/app.coffee',
+      entries: src + '/javascript/app.js',
       dest: dest,
       outputName: 'app.js'
     }, {
-      entries: src + '/javascript/head.coffee',
+      entries: src + '/javascript/head.js',
       dest: dest,
       outputName: 'head.js'
     }]
