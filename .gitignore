@@ -1,8 +1,9 @@
 .DS_Store
 .sass-cache
 wwww/build/images
-wwww/build/app*
-wwww/build/head*
+wwww/build/app.css
+wwww/build/app.js
+wwww/build/head.js
 wwww/build/index.html
 data/
 .ruby-version
