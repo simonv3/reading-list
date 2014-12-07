@@ -9,6 +9,7 @@ module.exports = Backbone.View.extend({
     this.collection = collection;
     this.render();
     pubSub.on('renderShelves', this.render, this);
+    pubSub.on('remove:shelf', this.removeShelf, this);
   },
   render: function(){
     this.$el.html('');
@@ -23,6 +24,13 @@ module.exports = Backbone.View.extend({
   addShelf: function( shelf ){
     this.collection.add(shelf);
     this.render();
+  },
+  removeShelf: function ( shelf ){
+    var that = this;
+    hoodie.store.remove('shelf', shelf.get('id'))
+        .then(function(){
+          that.collection.remove(shelf);
+        });
   },
   setIndexAsActive: function( index ){
     this.collection.models[index].setActive(true);

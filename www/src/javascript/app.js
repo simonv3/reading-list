@@ -23,11 +23,11 @@ var HoodieAccountBar = require('./views/hoodie_account_bar');
 // // The only thing that should be in a DOMReady
 $(function() {
   // initialize Hoodie
-  
+
   // var app = app || {};
 
   // create a publisher subscriber model
-  
+
 
   // Instantiate main book collection view.
   var bookCollectionView = new BookCollectionView();
@@ -48,8 +48,8 @@ $(function() {
       name: 'other'
     });
     shelvesCollectionView = new ShelfCollectionView(shelfCollection);
-    
-    // fetch all the books that belong to 
+
+    // fetch all the books that belong to
     // the user, and add them to the right shelf
     hoodie.store.findAll('book').then(function(allBooks) {
       allBooks.forEach(function(book){
@@ -80,12 +80,16 @@ $(function() {
 
   $('#listinput').on('keyup', function(event){
     var val = event.target.value;
-
     if (event.keyCode === 13){
       // add a shelf
       var shelf = new Shelf({ name : val });
-      shelvesCollectionView.addShelf(shelf);
-      hoodie.store.add('shelf', shelf.toJSON());
+
+      hoodie.store.add('shelf', shelf.toJSON())
+        .then(function( shelf ){
+          console.log(shelf);
+          shelvesCollectionView.addShelf(shelf);
+        });
+      $('#listinput').val('');
     }
   });
 

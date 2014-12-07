@@ -16,9 +16,7 @@ module.exports = Backbone.View.extend({
     return this;
   },
   chooseBook: function(event){
-
-    pubSub.trigger('add:shelf', this.model);
-
+    pubSub.trigger('add:book', this.model);
     // add a book to the currently viewing shelf
   }
 });

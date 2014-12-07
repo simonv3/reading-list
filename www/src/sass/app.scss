@@ -113,6 +113,17 @@ input{
   }
 }
 
+.shelflist-wrapper{
+  margin-bottom: 2rem;
+
+  li{
+    .fa-trash{
+      float: right;
+      cursor: pointer;
+    }
+  }
+}
+
 .copy {
   padding: 10px;
   margin: 30px 0 0;

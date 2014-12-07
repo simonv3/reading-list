@@ -11,7 +11,8 @@ module.exports = Backbone.View.extend({
     };
   },
   events: {
-    'click': 'view'
+    'click': 'view',
+    'click i.fa-trash ': 'removeShelf'
   },
   initialize: function(){
     // this.model.on('change:active', this.setCollection, this);
@@ -22,5 +23,14 @@ module.exports = Backbone.View.extend({
   },
   view: function( event ){
     this.model.setActive(true);
+  },
+  removeShelf: function( event ){
+    if (confirm('Are you sure?')){
+      this.remove();
+      pubSub.trigger('remove:shelf', this.model);
+    } else {
+      console.log('fail');
+    }
   }
+
 });

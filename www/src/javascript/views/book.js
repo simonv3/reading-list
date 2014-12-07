@@ -1,5 +1,5 @@
 'use strict';
- 
+
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -19,7 +19,6 @@ module.exports = Backbone.View.extend({
   },
   deleteBook: function(){
     this.remove();
-    console.log('deleting the book');
-    pubSub.trigger('remove:shelf', this.model);    
+    pubSub.trigger('remove:book', this.model);
   }
 });

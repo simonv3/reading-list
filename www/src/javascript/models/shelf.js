@@ -8,11 +8,11 @@ module.exports = Backbone.Model.extend({
   initialize: function(options){
     this.set('name', options.name);
     this.set('nested', options.collection || new BookCollection());
-    pubSub.on('add:shelf', this.addBookToShelf, this);
-    pubSub.on('remove:shelf', this.removeBookFromShelf, this);
+    pubSub.on('add:book', this.addBookToShelf, this);
+    pubSub.on('remove:book', this.removeBookFromShelf, this);
   },
   setActive: function(val){
-    // the active status of model is actually 
+    // the active status of model is actually
     // dependent on the collection the model is in
     this.trigger('setactive', this);
   },
@@ -35,7 +35,6 @@ module.exports = Backbone.Model.extend({
       hoodie.store.remove('book', book.get('id'))
         .then(function(){
           that.get('nested').remove(book);
-
       });
     }
   }
