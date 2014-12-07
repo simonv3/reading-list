@@ -1,6 +1,6 @@
 .DS_Store
 .sass-cache
-*wwww/build/*
+*www/build/*
 data/
 .ruby-version
 Desktop.ini
