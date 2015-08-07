@@ -1,0 +1,33 @@
+{
+  "name": "appName",
+  "version": "1.0.0",
+  "type": "app",
+  "dependencies": {
+    "hoodie-plugin-appconfig": "^2.0.1",
+    "hoodie-plugin-backbone": "^1.1.1",
+    "hoodie-plugin-email": "^1.0.0",
+    "hoodie-plugin-isbn": "^0.1.2",
+    "hoodie-plugin-users": "^2.2.2",
+    "hoodie-server": "^4.0.2"
+  },
+  "scripts": {
+    "start": "node node_modules/hoodie-server/bin/start"
+  },
+  "hoodie": {
+    "plugins": [
+      "hoodie-plugin-appconfig",
+      "hoodie-plugin-email",
+      "hoodie-plugin-users",
+      "hoodie-plugin-backbone",
+      "hoodie-plugin-isbn"
+    ]
+  },
+  "gitHead": "e3818cb1ff6c737ac7c74ce577754a2f774d4c98",
+  "readme": "# Boilerplate for new Hoodie App\n\nYou can start to build your (mobile) app in a fingersnap.\n\n\n\n## Installation\n\n`$ hoodie new appName -t \"hoodiehq/hoodie-app-skeleton\" `\n\n## Browser Support (depending on Hoodie)\n\n+ Firefox (29+)\n+ Chrome (34+)\n+ Desktop Safari (7+)\n+ Internet Explorer 10+\n+ Opera (21+)\n+ Android 4.3+\n+ iOS Safari (7.1+)\n\n## Including\n\n+ jQuery-2.1.0\n+ Skeleton 2.0.4 (http://getskeleton.com/)\n\nindex.html\n+ including all (css + js) files you need\n\nmain.css\n\nmain.js\n+ init hoodie\n\nlogin.html\n+ small form for login\n\nlogin.js\n+ hoodie account function already prepeared\n",
+  "readmeFilename": "README.md",
+  "description": "You can start to build your (mobile) app in a fingersnap.",
+  "_id": "hoodie-app-skeleton@1.0.0",
+  "_shasum": "ba88e9f3d4d91780902cc8a9636eefe20b3868ac",
+  "_from": "hoodiehq/hoodie-app-skeleton",
+  "_resolved": "git://github.com/hoodiehq/hoodie-app-skeleton.git#e3818cb1ff6c737ac7c74ce577754a2f774d4c98"
+}

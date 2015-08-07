@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Hoodie App Skeleton</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Vendor CSS
+  ================================================== -->
+  <link rel="stylesheet" href="assets/vendor/Skeleton-2.0.4/css/normalize.css">
+  <link rel="stylesheet" href="assets/vendor/Skeleton-2.0.4/css/skeleton.css">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Favicons
+  ================================================= -->
+  <link rel="shortcut icon" href="assets/vendor/Skeleton-2.0.4/images/favicon.ico">
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  ================================================== -->
+
+  <div class="container">
+    <form>
+      <label>Search For Books Online:</label>
+      <input type="search" id="search-online"/>
+      <span class="loading" id="loading">loading</span>
+      <ul id="search-results">
+      </ul>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Book
+          </th>
+          <th>
+            Author
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <footer class="row">
+      <small>made by <a href="http://hood.ie">Hoodie</a> with ❤</small>
+    </footer>
+
+  </div><!-- container -->
+
+    <script type="text/template" class="template" id="search-result-list">
+      <% _.each(books, function(book) { %>
+        <li>
+          <%= book.get('title') %> -
+          <% if (book.get('author_data').length > 0) { %>
+            <%= book.get('author_data')[0].name %>
+          <% } %>
+        </li>
+      <% }); %>
+    </script>
+
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-debounce/jquery.debounce.js"></script>
+    <script src="assets/vendor/underscore/underscore-min.js"></script>
+    <script src="assets/vendor/backbone/backbone-min.js"></script>
+    <!-- Load the dynamic version of hoodie.js that includes all the plugin code-->
+    <script src="/_api/_files/hoodie.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/login.js"></script>
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
