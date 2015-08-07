@@ -1,0 +1,17 @@
+{
+  "name": "read",
+  "version": "0.0.1",
+  "homepage": "https://github.com/simonv3/reading-list",
+  "authors": [
+    "Simon <svansintjan@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/assets/vendor/",
+    "test",
+    "tests"
+  ]
+}
