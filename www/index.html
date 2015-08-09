@@ -17,6 +17,7 @@
   ================================================== -->
   <link rel="stylesheet" href="assets/vendor/skeleton-css/css/normalize.css">
   <link rel="stylesheet" href="assets/vendor/skeleton-css/css/skeleton.css">
+  <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
 
   <!-- CSS
   ================================================== -->
@@ -31,7 +32,7 @@
   <!-- Primary Page Layout
   ================================================== -->
 
-  <div class="container">
+  <!-- <div class="container">
     <form>
       <label>Search For Books Online:</label>
       <input type="search" id="search-online"/>
@@ -68,28 +69,24 @@
       <small>made by <a href="http://hood.ie">Hoodie</a> with ❤</small>
     </footer>
 
-  </div><!-- container -->
+  </div> --><!-- container -->
 
     <script type="text/template" class="template" id="search-result-list">
-      <% _.each(books, function(book) { %>
-        <li>
-          <%= book.get('title') %> -
-          <% if (book.get('author_data').length > 0) { %>
-            <%= book.get('author_data')[0].name %>
-          <% } %>
-        </li>
-      <% }); %>
+
     </script>
 
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="assets/vendor/jquery-debounce/jquery.debounce.js"></script>
     <script src="assets/vendor/underscore/underscore-min.js"></script>
     <script src="assets/vendor/backbone/backbone-min.js"></script>
+    <script src="assets/vendor/react/react.min.js"></script>
+    <script src="assets/vendor/classnames/index.js"></script>
     <!-- Load the dynamic version of hoodie.js that includes all the plugin code-->
     <script src="/_api/_files/hoodie.js"></script>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/login.js"></script>
+    <script src="build/bundle.js"></script>
+    <!-- <script src="assets/js/main.js"></script>
+    <script src="assets/js/login.js"></script> -->
 
 <!-- End Document
 ================================================== -->

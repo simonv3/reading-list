@@ -13,5 +13,9 @@
     "www/assets/vendor/",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "font-awesome": "~4.4.0",
+    "classnames": "~2.1.3"
+  }
 }

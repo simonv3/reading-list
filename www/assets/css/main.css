@@ -22,3 +22,7 @@
 .loading {
   display: none;
 }
+
+.collapsed {
+  display: none;
+}

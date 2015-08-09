@@ -1,85 +1,62 @@
 'use strict'
 
+// require('./login.js');
+
+// initialize Hoodie
+
+require('./models/models.js');
+
+var ReadingList = require('./views/ReadingList.jsx');
+
+var SEARCH_RESULTS = [
+  {title: 'Jane', author: 'Normark'},
+  {title: 'Mountains Beyond Mountains', author: 'Tracy Kidder'},
+  {title: 'The handmaid\'s tale', author: 'Margaret Atwood'},
+];
+
+var BOOKS = [
+  {title: 'Mountains Beyond Mountains', author: 'Tracy Kidder', tags: ['to-read']},
+  {title: 'Jane', author: 'Normark', tags: ['reading']},
+  {title: 'Ruby On Rails', author: 'Various', tags: ['reading']},
+  {title: 'The handmaid\'s tale', author: 'Margaret Atwood', tags: ['sci-fi']},
+  {title: 'The Next Revolution', author: 'Murray Bookchin', tags: ['to-read']},
+];
+
+React.render(<ReadingList searchResults={SEARCH_RESULTS} books={BOOKS}/>, document.body);
+
+// React.renderComponent(ReadingList(), document.getElementById('content'))
+
 // _.templateSettings = {
 //   interpolate: /\{\%(.+?)\%\}/g,
 //   escape: /\{\{\-(.+?)\}\}/g,
 //   evaluate: /\{\{(.+?)\}\}/g
 // };
 
-var searchResultListTemplate = _.template($("#search-result-list").html());
-var bookListTemplate = $("#book-list").html();
+// var searchResultListTemplate = _.template($("#search-result-list").html());
+// var bookListTemplate = $("#book-list").html();
 
-// initialize Hoodie
-var hoodie  = new Hoodie();
+// var books = new BookCollection();
+// var searchResults = new BookCollection();
 
-var ReadDateModel = hoodie.backbone.Model.extend({
-  type: 'read-date',
-  dateStarted: null,
-  progress: 0,
-  dateEnded: null
-});
-
-var ReadDateCollection = hoodie.backbone.Collection.extend({
-  model: ReadDateModel
-});
-
-var TagModel = hoodie.backbone.Model.extend({
-  type: 'tag',
-  name: null,
-  dateAdded: null,
-});
-
-var TagCollection = hoodie.backbone.Collection.extend({
-  model: TagModel
-});
-
-var LinkModel = hoodie.backbone.Model.extend({
-  type: 'link',
-  name: null,
-  url: null,
-  dateAdded: null,
-});
-
-var LinkCollection = hoodie.backbone.Collection.extend({
-  model: LinkModel
-});
-
-var BookModel = hoodie.backbone.Model.extend({
-  type: 'book',
-  notes: null,
-  isbn10: null,
-  rating: null,
-  readDates: new ReadDateCollection(),
-  tags: new TagCollection(),
-  links: new LinkCollection(),
-});
-
-var BookCollection = hoodie.backbone.Collection.extend({
-  model: BookModel
-});
-
-var books = new BookCollection();
-var searchResults = new BookCollection();
-
-$('#search-online').on('keyup', $.debounce(function(event) {
-  searchResults.reset();
-  var stillTyping = true;
-  var val = event.target.value;
-  // Be nice to the search
-  if (val.length >= 3){
-    $('#loading').show();
-    hoodie.isbn.searchbooks({
-      query: val
-    }).fail(function(){
-      console.log('fail');
-      $('#loading').hide();
-    }).done(function(search){
-      searchResults.set(search.result.data);
-      $('#loading').hide();
-      var data = {
-          books:searchResults.models
-      };
-      $("#search-results").html(searchResultListTemplate(data));
-    });
-  }
-}, 555));
+// $('#search-online').on('keyup', $.debounce(function(event) {
+//   searchResults.reset();
+//   var stillTyping = true;
+//   var val = event.target.value;
+//   // Be nice to the search
+//   if (val.length >= 3){
+//     $('#loading').show();
+//     hoodie.isbn.searchbooks({
+//       query: val
+//     }).fail(function(){
+//       console.log('fail');
+//       $('#loading').hide();
+//     }).done(function(search){
+//       searchResults.set(search.result.data);
+//       $('#loading').hide();
+//       var data = {
+//           books: searchResults.toJSON()
+//       };
+//       $("#search-results").html(searchResultListTemplate(data));
+//     });
+//   }
+// }, 555));
