@@ -9,18 +9,32 @@ var gutil = require('gulp-util');
 var reactify = require('reactify');
 var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
+var sass = require('gulp-sass');
 
 // add custom browserify options here
 var customOpts = {
-  entries: ['./www/assets/js/main.js'],
-  inputs: ['www/assets/js/**/*.js', '**/*.js'],
-  output: 'bundle.js',
+
+  js: {
+    entries: ['./www/assets/js/main.js'],
+    inputs: ['./www/assets/js/**/*.js'],
+    output: 'bundle.js',
+  },
+  sass: {
+    entries: ['./www/assets/sass/main.scss'],
+    inputs: ['./www/assets/sass/**/*.scss'],
+    output: 'main.css'
+  },
   outputDir: './www/build/',
   debug: true
 };
-var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
 
+var opts = assign({}, watchify.args, {
+  entries: customOpts.entries,
+  debug: true,
+});
+
+console.log(opts);
+var b = watchify(browserify(opts));
 // add transformations here
 // i.e. b.transform(coffeeify);
 b.transform(reactify);
@@ -33,7 +47,7 @@ function bundle() {
   return b.bundle()
     // log errors if they happen
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-    .pipe(source(customOpts.output))
+    .pipe(source(customOpts.js.output))
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
     // optional, remove if you dont want sourcemaps
@@ -43,6 +57,13 @@ function bundle() {
     .pipe(gulp.dest(customOpts.outputDir));
 }
 
+gulp.task('sass', function () {
+  gulp.src(customOpts.sass.entries)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(customOpts.outputDir));
+});
+
 gulp.task('watch', function() {
-  gulp.watch(customOpts.inputs, ['js']);
+  gulp.watch(customOpts.js.inputs, ['js']);
+  gulp.watch(customOpts.sass.inputs, ['sass']);
 });

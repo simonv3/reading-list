@@ -3,6 +3,7 @@
 // require('./login.js');
 
 // initialize Hoodie
+
 var hoodie = new Hoodie();
 
 var models = require('./models/models.js');

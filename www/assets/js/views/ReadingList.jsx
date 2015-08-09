@@ -48,4 +48,5 @@ var ReadingList = React.createClass({
     );
   }
 });
+
 module.exports = ReadingList;
