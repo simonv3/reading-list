@@ -7,7 +7,8 @@ var BookListItem = React.createClass({
       expandBook: false,
     }
   },
-  expandBookToggle: function() {
+  expandBookToggle: function(e) {
+    e.preventDefault();
     this.setState({
       expandBook: !this.state.expandBook
     })

@@ -9,8 +9,10 @@ var BookListItemHeader = React.createClass({
           <td>
             {this.props.book.author}
           </td>
-          <td onClick={this.props.onExpandBookToggle}>
-            <i className="fa fa-chevron-down"></i>
+          <td >
+            <a onClick={this.props.onExpandBookToggle}>
+              <i className="fa fa-chevron-down"></i>
+            </a>
           </td>
         </tr>
       );

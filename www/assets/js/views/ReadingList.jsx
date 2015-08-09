@@ -1,17 +1,33 @@
+var models = require('../models/models.js');
+
 var SearchBar = require('./SearchBar/SearchBar.jsx');
 var BookList = require('./BookList/BookList.jsx');
 
 var ReadingList = React.createClass({
   getInitialState: function() {
     return {
-      searchQuery: '',
+      searchResults: new models.BookCollection()
     };
   },
-  handleUserInput: function(searchQuery) {
-    this.setState({
-      searchQuery: searchQuery
-    })
+  handleUserSearchQuery: function(searchQuery) {
+    var searchResults = [];
+    var that = this;
+
+    if (searchQuery.length >= 3) {
+      this.props.hoodie.isbn.searchbooks({
+        query: searchQuery
+      }).fail(function(e) {
+        console.log('there was an error', e);
+      }).done(function(search) {
+        searchResults = new models.BookCollection();
+        searchResults.set(search.result.data)
+        that.setState({
+          searchResults: searchResults.toJSON()
+        });
+      })
+    }
   },
+
   render: function(){
 
     var currentlyReading = this.props.books.filter(function(book) {
@@ -24,9 +40,8 @@ var ReadingList = React.createClass({
 
     return (
       <div className="container">
-        <SearchBar searchResults={this.props.searchResults}
-                   searchQuery={this.state.searchQuery}
-                   onUserInput={this.handleUserInput}/>
+        <SearchBar searchResults={this.state.searchResults}
+                   onUserEntersSearch={this.handleUserSearchQuery}/>
         <BookList books={this.props.books}
                   currentlyReading={currentlyReading}/>
       </div>

@@ -1,47 +1,51 @@
 var hoodie = new Hoodie();
 
-var ReadDateModel = hoodie.backbone.Model.extend({
+var models = {};
+
+models.ReadDateModel = hoodie.backbone.Model.extend({
   type: 'read-date',
   dateStarted: null,
   progress: 0,
   dateEnded: null
 });
 
-var ReadDateCollection = hoodie.backbone.Collection.extend({
-  model: ReadDateModel
+models.ReadDateCollection = hoodie.backbone.Collection.extend({
+  model: models.ReadDateModel
 });
 
-var TagModel = hoodie.backbone.Model.extend({
+models.TagModel = hoodie.backbone.Model.extend({
   type: 'tag',
   name: null,
   dateAdded: null,
 });
 
-var TagCollection = hoodie.backbone.Collection.extend({
-  model: TagModel
+models.TagCollection = hoodie.backbone.Collection.extend({
+  model: models.TagModel
 });
 
-var LinkModel = hoodie.backbone.Model.extend({
+models.LinkModel = hoodie.backbone.Model.extend({
   type: 'link',
   name: null,
   url: null,
   dateAdded: null,
 });
 
-var LinkCollection = hoodie.backbone.Collection.extend({
-  model: LinkModel
+models.LinkCollection = hoodie.backbone.Collection.extend({
+  model: models.LinkModel
 });
 
-var BookModel = hoodie.backbone.Model.extend({
+models.BookModel = hoodie.backbone.Model.extend({
   type: 'book',
   notes: null,
   isbn10: null,
   rating: null,
-  readDates: new ReadDateCollection(),
-  tags: new TagCollection(),
-  links: new LinkCollection(),
+  readDates: new models.ReadDateCollection(),
+  tags: new models.TagCollection(),
+  links: new models.LinkCollection(),
 });
 
-var BookCollection = hoodie.backbone.Collection.extend({
-  model: BookModel
+models.BookCollection = hoodie.backbone.Collection.extend({
+  model: models.BookModel
 });
+
+module.exports = models;
