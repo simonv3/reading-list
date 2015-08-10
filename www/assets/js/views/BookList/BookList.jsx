@@ -4,28 +4,24 @@ var BookList = React.createClass({
   render: function(){
 
     var currentlyReading = this.props.currentlyReading.map(function(book) {
-      return <BookListItem book={book} />
+      return <BookListItem book={book} key={book.title + book.isbn13}/>
     });
 
     var books = this.props.books.map(function(book) {
-      return <BookListItem book={book} />
+      return <BookListItem book={book} key={book.title + book.isbn13}/>
     });
 
     return (
-      <table className="books">
+      <div className="books">
         <h2>Currently Reading</h2>
-          <table>
-            <tbody>
-              {currentlyReading}
-            </tbody>
-          </table>
+        <ul>
+          {currentlyReading}
+        </ul>
         <h2>All Books</h2>
-          <table>
-            <tbody>
-              {books}
-            </tbody>
-          </table>
-      </table>
+        <ul>
+        {books}
+        </ul>
+      </div>
     );
   }
 });

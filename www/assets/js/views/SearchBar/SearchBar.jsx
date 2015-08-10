@@ -3,23 +3,39 @@ var SearchInput = require('./SearchInput.jsx');
 
 var SearchBar = React.createClass({
 
+  // getInitialState: function () {
+  //   return {
+  //     query: this.props.query
+  //   };
+  // },
+
   render: function() {
+    var that = this;
     var searchResults = [];
 
     this.props.searchResults
-      .forEach(function(searchResult) {
+      .forEach(function(searchResult, index) {
         searchResults.push(<SearchResultsListItem
+                               index={index + 1}
                                searchResult={searchResult}
+                               addBookToTag={that.props.addBookToTag}
                                key={searchResult.isbn13} />);
     });
+
+    var olClasses = classNames({
+      'collapsed': this.props.searchResults.length === 0
+    });
+
     return (
-      <div class="search-bar">
-        <form>
-          <SearchInput onUserEntersSearch={this.props.onUserEntersSearch}/>
+      <div className="search-bar">
+        <form className="row">
+          <SearchInput onUserEntersSearch={this.props.onUserEntersSearch}
+                       searchQuery={this.props.searchQuery}/>
+          { this.props.isSearching ? <i className="fa fa-spinner fa-spin"></i> : ' '}
         </form>
-        <ul>
+        <ol className={olClasses}>
           {searchResults}
-        </ul>
+        </ol>
       </div>
     );
   }

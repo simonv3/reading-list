@@ -1,4 +1,10 @@
+@import "variables";
+
+@import "ui/pills";
+@import "ui/table";
+
 @import "components/search-bar";
+@import "components/books";
 
 .container {
   margin-top: 40px;

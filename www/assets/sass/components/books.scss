@@ -1,0 +1,35 @@
+.books {
+
+  ul {
+    list-style: none;
+
+    li {
+      border-bottom: 1px solid $thin-line;
+    }
+  }
+
+  .actions {
+    text-align: right;
+
+    a {
+      width: 100%;
+      display: inline-block;
+      height: 100%;
+      cursor: pointer;
+      padding: 0 .5rem;
+      box-sizing: padding-box;
+    }
+
+    i {
+      transition: 200ms transform;
+    }
+
+    i.fa-chevron-down.upside-down {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.book-data {
+  padding: 1rem;
+}

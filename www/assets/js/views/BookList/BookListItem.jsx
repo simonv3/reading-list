@@ -17,19 +17,17 @@ var BookListItem = React.createClass({
 
     var classes = classNames({
       'collapsed': !this.state.expandBook
-    });
+    }, 'twelve', 'columns', 'book-data');
 
     return (
-      <div>
+      <li className="row book-item">
         <BookListItemHeader book={this.props.book}
                             expandBook={this.state.expandBook}
                             onExpandBookToggle={this.expandBookToggle}/>
-        <tr className={classes}>
-          <td colSpan="3">
-            Book Information
-          </td>
-        </tr>
-      </div>
+        <div className={classes}>
+          Book Information
+        </div>
+      </li>
     );
   }
 });

@@ -1,20 +1,28 @@
 var BookListItemHeader = React.createClass({
     render: function() {
 
+      var actionClasses = classNames('fa', 'fa-chevron-down', {
+        'upside-down': this.props.expandBook,
+      });
+
+      var author_data = this.props.book.author_data;
+
+      var author = author_data.length > 0 ? author_data[0].name : '...';
+
       return (
-        <tr>
-          <td>
+        <div className="twelve columns">
+          <div className="five columns book-data">
             {this.props.book.title}
-          </td>
-          <td>
-            {this.props.book.author}
-          </td>
-          <td >
+          </div>
+          <div className="five columns book-data">
+            {author}
+          </div>
+          <div className="two columns actions book-data">
             <a onClick={this.props.onExpandBookToggle}>
-              <i className="fa fa-chevron-down"></i>
+              <i className={actionClasses}></i>
             </a>
-          </td>
-        </tr>
+          </div>
+        </div>
       );
     }
 });

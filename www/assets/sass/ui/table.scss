@@ -1,0 +1,16 @@
+table {
+
+  // Tables don't need spacing in between columns
+
+  .column, .columns {
+    margin-left: 0;
+  }
+
+  .five.columns {
+    width: 41.666666667%;
+  }
+
+  .two.columns {
+    width: 16.666666667%;
+  }
+}

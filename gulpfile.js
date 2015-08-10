@@ -13,10 +13,9 @@ var sass = require('gulp-sass');
 
 // add custom browserify options here
 var customOpts = {
-
   js: {
     entries: ['./www/assets/js/main.js'],
-    inputs: ['./www/assets/js/**/*.js'],
+    inputs: ['./www/assets/js/**/*.js', './www/assets/js/**/*.jsx'],
     output: 'bundle.js',
   },
   sass: {
@@ -29,11 +28,10 @@ var customOpts = {
 };
 
 var opts = assign({}, watchify.args, {
-  entries: customOpts.entries,
+  entries: customOpts.js.entries,
   debug: true,
 });
 
-console.log(opts);
 var b = watchify(browserify(opts));
 // add transformations here
 // i.e. b.transform(coffeeify);

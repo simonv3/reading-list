@@ -1,3 +1,49 @@
 .loading {
   display: inline-block;
 }
+
+.search-bar {
+  position: relative;
+  background-color: $off-white;
+  margin-bottom: 3rem;
+
+  form {
+    margin-bottom: 0;
+    padding: .5rem;
+
+    input {
+      margin: 0;
+    }
+
+    i {
+      top: 1.7rem;
+      position: absolute;
+      right: 1.5rem;
+    }
+  }
+
+  ol {
+    background-color: $off-white;
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: padding-box;
+    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.search-result {
+
+  .book-title {
+    /*font-weight: bold;*/
+  }
+
+  .to-view {
+    margin-right: 1rem;
+  }
+
+  .actions {
+    text-align: right;
+  }
+}
