@@ -5,14 +5,14 @@ var BookListItemHeader = React.createClass({
         'upside-down': this.props.expandBook,
       });
 
-      var author_data = this.props.book.author_data;
+      var authors = this.props.book.get('authors');
 
-      var author = author_data.length > 0 ? author_data[0].name : '...';
+      var author = authors.length > 0 ? authors[0].name : '...';
 
       return (
         <div className="twelve columns">
           <div className="five columns book-data">
-            {this.props.book.title}
+            {this.props.book.get('title')}
           </div>
           <div className="five columns book-data">
             {author}

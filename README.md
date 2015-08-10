@@ -1,38 +1,29 @@
-# Boilerplate for new Hoodie App
+# Reading List
 
-You can start to build your (mobile) app in a fingersnap.
+Keep track of what you're reading on your own machine.
 
+Currently doesn't do much beyond querying a database for books.
 
+## Dev
 
-## Installation
+### ToDo
 
-`$ hoodie new appName -t "hoodiehq/hoodie-app-skeleton" `
+### Getting Started
 
-## Browser Support (depending on Hoodie)
+Read uses [hoodie](http://docs.hood.ie/en/start/).
 
-+ Firefox (29+)
-+ Chrome (34+)
-+ Desktop Safari (7+)
-+ Internet Explorer 10+
-+ Opera (21+)
-+ Android 4.3+
-+ iOS Safari (7.1+)
+```
+git clone git@github.com:simonv3/reading-list
+```
 
-## Including
+You need to have the hoodie server running:
 
-+ jQuery-2.1.0
-+ Skeleton 2.0.4 (http://getskeleton.com/)
+```
+hoodie start
+```
 
-index.html
-+ including all (css + js) files you need
+And if you want to actively develop on the reading list:
 
-main.css
-
-main.js
-+ init hoodie
-
-login.html
-+ small form for login
-
-login.js
-+ hoodie account function already prepeared
+```
+gulp watch
+```

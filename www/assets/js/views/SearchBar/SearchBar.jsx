@@ -15,11 +15,12 @@ var SearchBar = React.createClass({
 
     this.props.searchResults
       .forEach(function(searchResult, index) {
+        var key = searchResult.attributes.isbn13;
         searchResults.push(<SearchResultsListItem
                                index={index + 1}
                                searchResult={searchResult}
-                               addBookToTag={that.props.addBookToTag}
-                               key={searchResult.isbn13} />);
+                               addTagToBook={that.props.addTagToBook}
+                               key={key} />);
     });
 
     var olClasses = classNames({

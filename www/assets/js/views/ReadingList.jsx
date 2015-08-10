@@ -14,7 +14,7 @@ var ReadingList = React.createClass({
   },
 
   handleUserSearchQuery: function(searchQuery) {
-    var searchResults = [];
+    var searchResults = new models.BookCollection();
     var that = this;
 
     that.setState({
@@ -28,11 +28,19 @@ var ReadingList = React.createClass({
       }).fail(function(e) {
         console.log('there was an error', e);
       }).done(function(search) {
-        searchResults = new models.BookCollection();
-        searchResults.set(search.result.data)
+        search.result.data.forEach(function(datum) {
+          var book = new models.BookModel({
+            title: datum.title,
+            authors: datum.author_data,
+            isbn10: datum.isbn10,
+            isbn13: datum.isbn13
+          });
+
+          searchResults.add(book);
+        });
         that.setState({
-          searchResults: searchResults.toJSON(),
-          isSearching: false
+          searchResults: searchResults,
+          isSearching: false,
         });
       })
     } else {
@@ -42,18 +50,26 @@ var ReadingList = React.createClass({
     }
   },
 
-  addBookToTag: function(book, input) {
-    console.log('adding book');
+  addTagToBook: function(book, input) {
     var tags = _.isString(input) ? [input] : input;
 
-    book.tags ? book.concat(input) : book.tags = input;
+    tags.forEach(function(tag) {
+      console.log(book);
+      book.get('tags').add({
+        name: tag
+      });
+    })
 
     var books = this.state.books;
-    var newBooks = books.concat([book]);
+    // console.log(books);
+    books.add(book);
+
+    // console.log(newBooks);
 
     this.setState({
-      books: newBooks,
-      searchResults: []
+      books: books,
+      searchResults: [],
+      searchQuery: ''
     });
   },
 
@@ -75,20 +91,15 @@ var ReadingList = React.createClass({
 
   render: function(){
 
-    var currentlyReading = this.state.books.filter(function(book) {
-      return book.tags.indexOf('reading') !== -1;
-    });
-
     return (
       <div className="container">
         <h1>Read</h1>
         <SearchBar searchResults={this.state.searchResults}
                    isSearching={this.state.isSearching}
                    onUserEntersSearch={this.handleSearchChange}
-                   addBookToTag={this.addBookToTag}
+                   addTagToBook={this.addTagToBook}
                    searchQuery={this.state.searchQuery}/>
-        <BookList books={this.state.books}
-                  currentlyReading={currentlyReading}/>
+        <BookList books={this.state.books}/>
       </div>
     );
   }

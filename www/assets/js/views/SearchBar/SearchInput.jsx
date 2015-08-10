@@ -5,7 +5,7 @@ var SearchInput = React.createClass({
     return (
         <input type="text"
                className="twelve columns"
-               placeholder="Search..."
+               placeholder="Search all books..."
                value={this.props.searchQuery}
                ref="searchQueryInput"
                onChange={this.props.onUserEntersSearch}/>

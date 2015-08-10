@@ -15,8 +15,10 @@ models.ReadDateCollection = hoodie.backbone.Collection.extend({
 
 models.TagModel = hoodie.backbone.Model.extend({
   type: 'tag',
-  name: null,
-  dateAdded: null,
+  defaults: {
+    name: null,
+    dateAdded: moment(),
+  }
 });
 
 models.TagCollection = hoodie.backbone.Collection.extend({
@@ -36,12 +38,24 @@ models.LinkCollection = hoodie.backbone.Collection.extend({
 
 models.BookModel = hoodie.backbone.Model.extend({
   type: 'book',
-  notes: null,
-  isbn10: null,
-  rating: null,
-  readDates: new models.ReadDateCollection(),
-  tags: new models.TagCollection(),
-  links: new models.LinkCollection(),
+  defaults: {
+    notes: null,
+    isbn10: null,
+    isbn13: null,
+    rating: null,
+    authors: null,
+    title: '',
+    tags: new models.TagCollection(),
+    readDates: new models.ReadDateCollection(),
+    links: new models.LinkCollection()
+  }
+  // constructor: function() {
+  //   this.readDates = new models.ReadDateCollection();
+  //   this.tags = new models.TagCollection();
+  //   this.links = new models.LinkCollection();
+  //   Backbone.Model.apply(this, arguments);
+  // }
+
 });
 
 models.BookCollection = hoodie.backbone.Collection.extend({
