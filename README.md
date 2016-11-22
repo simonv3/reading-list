@@ -14,6 +14,7 @@ Read uses [hoodie](http://docs.hood.ie/en/start/).
 
 ```
 git clone git@github.com:simonv3/reading-list
+npm install
 ```
 
 You need to have the hoodie server running:
